@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes App</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+</head>
+
+<body>
+    <section class="section-center">
+        <p class="alert"></p>
+        <div class="note-list">
+            <article class="note-item">
+                <div class="btn-container">
+                    <button class="open-modal-btn">
+              <i class="fa fa-plus"></i>
+            </button>
+                    <p class="text">add new note</p>
+                </div>
+            </article>
+            <!-- <article class="note-item grid-3-row">
+                <h3 class="title">this is title</h3>
+                <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, nemo.</p>
+                <div class="info">
+                    <p class="date">april 3, 2022</p>
+                    <div class="more-option">
+                        <button class="more-option-btn">
+                            <i class="fa fa-ellipsis-h"></i>
+                        </button>
+                        <ul class="options">
+                            <li class="edit">
+                                <button class="edit-btn">
+                                    <i class="fa fa-pencil"></i>
+                                </button>
+                            </li>
+                            <li class="delete">
+                                <button class="delete-btn">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </article> -->
+        </div>
+        <div class="note-overlay">
+            <form class="note-form">
+                <div class="form-header">
+                    <h2 class="form-title">add new note</h2>
+                    <button class="close">
+              <i class="fa fa-times"></i>
+            </button>
+                </div>
+                <div class="form-content">
+                    <div class="add-title">
+                        <p>title</p>
+                        <input type="text" id="title-input" placeholder="title..." />
+                    </div>
+                    <div class="add-desc">
+                        <p>description</p>
+                        <textarea id="desc-input" placeholder="description..." cols="30" rows="10"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="add-note-btn">add note</button>
+            </form>
+        </div>
+    </section>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
