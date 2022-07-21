@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Gotham Rounded";
+    src: url("../fonts/gotham-rounded/GothamRounded-Bold.otf");
+}
+
+body {
+    background: linear-gradient(to right, #0084f5, #00adffc7);
+    font-family: "Gotham Rounded";
+}
+
+.calculator {
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    grid-template-columns: repeat(4, 90px);
+    grid-template-rows: minmax(120px, auto) repeat(6, 80px);
+}
+
+.calculator span {
+    display: grid;
+    place-items: center;
+    background-color: #f3f3f3fa;
+    border: 1px solid #fff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.calculator span:hover {
+    background-color: #fff;
+}
+
+.display {
+    display: grid;
+    grid-column: span 4;
+    text-align: right;
+    padding-right: 1rem;
+    background-color: #333333;
+    color: #fff;
+    align-content: center;
+    font-size: 2rem;
+}
+
+.span-2 {
+    grid-column: span 2;
+}
+
+.btn-number {
+    background-color: #f1f5f8 !important;
+}
+
+.btn-number:hover {
+    background-color: #fff !important;
+}
