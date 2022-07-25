@@ -8,21 +8,91 @@ class Calculator {
         this.currentOperand = '0';
     }
 
+    // choose operation
+    chooseOperation(operation) {
+        if (this.currentOperand === '') return;
+        if (this.previousOperand !== '') {
+            this.compute();
+        }
+        this.operation = operation;
+        this.previousOperand = this.currentOperand;
+        this.currentOperand = '0';
+    }
+
+    // compute
+    compute() {
+        const prev = parseFloat(this.previousOperand);
+        const current = parseFloat(this.currentOperand);
+        let computaion;
+        if (isNaN(prev) || isNaN(current)) return;
+        switch (this.operation) {
+            case '+':
+                computaion = prev + current;
+                break;
+            case '-':
+                computaion = prev - current;
+                break;
+            case '*':
+                computaion = prev * current;
+                break;
+            case '÷':
+                computaion = prev / current;
+                break;
+            case '^':
+                computaion = prev ** current;
+                break;
+            default:
+                break;
+        }
+        this.currentOperand = computaion;
+        this.previousOperand = '';
+        this.operation = undefined;
+    }
+
+    // get display number
+    getDisplayNumber(number) {
+        const stringNumber = number.toString();
+        const integerDigit = parseFloat(stringNumber.split('.')[0]);
+        const decimalDigit = stringNumber.split('.')[1];
+        let integerDisplay;
+
+        // If integerDigit was a number, separate the numbers three by three
+        if (isNaN(integerDigit)) {
+            integerDisplay = '';
+        } else {
+            integerDisplay = integerDigit.toLocaleString('en', {
+                maximumFractionDigits: 0
+            });
+        }
+
+        // If decimal is not null, execute the following command
+        if (decimalDigit != null) {
+            return `${integerDisplay}.${decimalDigit}`;
+        } else {
+            return integerDisplay;
+        }
+    }
+
     // Add number to display
     appendNumber(number) {
+        if (number === '.' && this.currentOperand.includes('.')) return
         this.currentOperand = this.currentOperand.toString() + number.toString();
     }
 
     // update display
     updateDisplay() {
-        this.currentElement.textContent = this.currentOperand;
-        this.previousElement.textContent = this.previousOperand;
+        this.currentElement.textContent = this.getDisplayNumber(this.currentOperand);
+        if (this.operation != null) {
+            this.previousElement.textContent = `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`;
+        } else {
+            this.previousElement.textContent = '';
+        }
     }
 
     // clear display
     clear() {
         this.previousOperand = '';
-        this.currentOperand = '';
+        this.currentOperand = '0';
         this.operation = undefined;
     }
 
@@ -43,6 +113,7 @@ const previousElement = document.querySelector('.previous');
 const currentElement = document.querySelector('.current');
 const fractionalBtn = document.querySelector('#fractional');
 const squareBtn = document.querySelector('#square');
+const rootBtn = document.querySelector('#root');
 const operationBtns = document.querySelectorAll('[data-operation]');
 const numberBtns = document.querySelectorAll('.btn-number');
 const equalBtn = document.querySelector('#equal');
@@ -71,6 +142,36 @@ clear.addEventListener('click', () => {
 backspace.addEventListener('click', () => {
     calculator.delete();
     calculator.updateDisplay();
-})
+});
 
-// functions
+// operation buttons
+operationBtns.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.chooseOperation(button.dataset.operation);
+        calculator.updateDisplay();
+    })
+});
+
+// equal button
+equalBtn.addEventListener('click', () => {
+    calculator.compute();
+    calculator.updateDisplay();
+});
+
+// square button
+squareBtn.addEventListener('click', () => {
+    calculator.currentOperand **= 2;
+    calculator.updateDisplay();
+});
+
+// fractiona button
+fractionalBtn.addEventListener('click', () => {
+    calculator.currentOperand = 1 / calculator.currentOperand;
+    calculator.updateDisplay();
+});
+
+// root button
+rootBtn.addEventListener('click', () => {
+    calculator.currentOperand = Math.sqrt(calculator.currentOperand);
+    calculator.updateDisplay();
+})
