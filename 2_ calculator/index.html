@@ -12,28 +12,36 @@
 
 <body>
     <div class="calculator">
-        <p class="display">0</p>
+        <div class="input">
+            <p class="previous"></p>
+            <p class="current">0</p>
+        </div>
         <span id="clear" class="span-2">C</span>
-        <span id="backspace" class="span-2"><i class="fa fa-backspace"></i></span>
-        <span><i>1/x</i></span>
+        <span id="root">√</span>
+        <span id="backspace"><i class="fa fa-backspace"></i></span>
+        <span id="fractional"><i>1/x</i></span>
         <span id="square"><i
           >x<sup><small>2</small></sup></i
         ></span
       >
-      <span id="root">√</span>
-        <span id="divide">÷</span>
+      <span id="pow" data-operation="^"
+        ><i
+          >x<sup><small>y</small></sup></i
+        ></span
+      >
+      <span id="divide" data-operation="÷">÷</span>
         <span class="btn-number" data-input="7">7</span>
         <span class="btn-number" data-input="8">8</span>
         <span class="btn-number" data-input="9">9</span>
-        <span id="multiply">*</span>
+        <span id="multiply" data-operation="*">*</span>
         <span class="btn-number" data-input="4">4</span>
         <span class="btn-number" data-input="5">5</span>
         <span class="btn-number" data-input="6">6</span>
-        <span id="minus">-</span>
+        <span id="minus" data-operation="-">-</span>
         <span class="btn-number" data-input="1">1</span>
         <span class="btn-number" data-input="2">2</span>
         <span class="btn-number" data-input="3">3</span>
-        <span id="plus">+</span>
+        <span id="plus" data-operation="+">+</span>
         <span class="btn-number" data-input="0">0</span>
         <span class="btn-number" data-input=".">.</span>
         <span id="equal" class="span-2">=</span>
