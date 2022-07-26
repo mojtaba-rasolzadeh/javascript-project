@@ -1,0 +1,39 @@
+@media screen and (min-width: 768px) {
+    .title h2 {
+        font-size: 2.5rem;
+    }
+    .section-center {
+        max-width: 960px;
+    }
+    .menu-item {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 1rem;
+        max-width: 720px;
+    }
+    .item-img {
+        width: 225px;
+        height: 176px;
+    }
+    .name,
+    .price,
+    .text {
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .section-center {
+        max-width: 1320px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        padding: 0 3rem;
+    }
+    .menu-item {
+        max-width: 1140px;
+    }
+    .item-img {
+        height: 152px;
+    }
+}
