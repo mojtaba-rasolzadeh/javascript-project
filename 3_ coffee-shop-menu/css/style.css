@@ -44,7 +44,7 @@ body {
     text-align: center;
 }
 
-.btn-container button {
+.menu-btn {
     border-color: #c59d5f;
     color: #C59D5F;
     border-radius: .5rem;
@@ -58,7 +58,7 @@ body {
     transition: all .3s linear;
 }
 
-.btn-container button:hover {
+.menu-btn:hover {
     background-color: #C59D5F;
     color: #fff;
 }

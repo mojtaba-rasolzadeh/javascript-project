@@ -89,16 +89,16 @@ const sectionCenter = document.querySelector(".section-center");
 
 // When the page is loaded
 window.addEventListener("DOMContentLoaded", () => {
-  // Display items on the screen
+  // Display items on the display
   displayMenuItems(menu);
 
-  // Display buttons on the screen
+  // Display buttons on the display
   displayMenuButtons();
 });
 
 // functions
 
-// Display items on the screen
+// Display items on the display
 function displayMenuItems(menu) {
   const menuItem = menu
     .map((item) => {
@@ -118,5 +118,51 @@ function displayMenuItems(menu) {
   sectionCenter.innerHTML = menuItem;
 }
 
-// Display buttons on the screen
-function displayMenuButtons() {}
+// Display buttons on the display
+function displayMenuButtons() {
+  // Get the category
+  const categories = menu.reduce(
+    (value, item) => {
+      if (!value.includes(item.category)) {
+        value.push(item.category);
+      }
+      return value;
+    },
+    ["all"]
+  );
+  // Making menu buttons
+  const categoryBtn = categories
+    .map((category) => {
+      return `<button type="button" class="menu-btn" data-id=${category}>${category}</button>`;
+    })
+    .join("");
+
+  // Add buttons to the display
+  btnContainer.innerHTML = categoryBtn;
+
+  // get menu buttons
+  const menuBtns = btnContainer.querySelectorAll(".menu-btn");
+
+  menuBtns.forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      // get category menu
+      const category = event.currentTarget.dataset.id;
+
+      // Get menu item
+      const menuItem = menu.filter((item) => {
+        //If the category of the item is equal to the button we pressed, execute the following command
+        if (item.category == category) {
+          return item;
+        }
+      });
+
+      // If the category of the item is equal to all, display all the items
+      if (category == "all") {
+        displayMenuItems(menu);
+      } else {
+        //Show items related to the category
+        displayMenuItems(menuItem);
+      }
+    });
+  });
+}
